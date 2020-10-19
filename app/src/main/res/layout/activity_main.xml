@@ -61,6 +61,7 @@
         android:backgroundTint="#B3F3ED"
         android:fontFamily="@font/annie_use_your_telescope"
         android:text="Skip"
+        android:textAlignment="center"
         android:textColor="#009688"
         android:textSize="24sp"
         android:textStyle="bold"

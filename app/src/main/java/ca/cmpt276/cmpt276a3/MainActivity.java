@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView title, author;
+    Button btnSkip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,5 +58,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         },5000);
+
+        btnSkip = (Button) findViewById(R.id.skip);
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            // Skips to main menu
+            @Override
+            public void onClick(View v) {
+                Intent intent = MenuActivity.makeIntent(MainActivity.this);
+                startActivity(intent);
+            }
+        });
+
     }
 }
