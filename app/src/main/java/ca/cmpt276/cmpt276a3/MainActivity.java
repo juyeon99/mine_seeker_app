@@ -16,10 +16,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+// Code found at:
 // https://www.youtube.com/watch?v=BU49KDMR1AY forcing landscape mode
 // https://www.youtube.com/watch?v=gwCvv4W6mGY welcome screen
 // https://www.youtube.com/watch?v=JLIFqqnSNmg welcome screen animation
+// https://www.youtube.com/watch?v=B1oaE0Odqes&feature=youtu.be switching activities
 
 
 
