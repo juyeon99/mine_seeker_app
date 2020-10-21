@@ -10,7 +10,9 @@
         android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".model.GameActivity"></activity>
+        <activity
+            android:name=".model.GameActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".model.OptionsActivity"
             android:screenOrientation="landscape" />
