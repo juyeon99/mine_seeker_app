@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,6 +16,7 @@ import ca.cmpt276.cmpt276a3.R;
 // Code found at:
 // https://www.youtube.com/watch?v=NgFBaffNEOY Spinners
 // https://www.youtube.com/watch?v=_yaP4etGKlU&feature=youtu.be Radio Buttons
+// https://www.youtube.com/watch?v=m_ZiP0U_zRA&feature=youtu.be Shared Preferences
 
 public class OptionsActivity extends AppCompatActivity{ // implements AdapterView.OnItemSelectedListener {
 
@@ -38,6 +41,7 @@ public class OptionsActivity extends AppCompatActivity{ // implements AdapterVie
         createRadioBtn1();
         createRadioBtn2();
 
+        String savedBoardSize = getGroupBoard(this);
 
 
 //        boardSize = (Spinner) findViewById(R.id.spnBoardSize);
@@ -125,14 +129,38 @@ public class OptionsActivity extends AppCompatActivity{ // implements AdapterVie
 
         //Create the buttons:
         for (int i = 0; i < boardSize.length; i++) {
-            String board_size = boardSize[i];
+            final String board_size = boardSize[i];
 
             RadioButton btn = new RadioButton(this);
             btn.setText(board_size);
 
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    saveGroupBoard(board_size);
+                }
+            });
+
             //Add to radio group:
             group.addView(btn);
+
+            if (board_size.equals(getGroupBoard(this))) {
+                btn.setChecked(true);
+            }
         }
+    }
+
+    private void saveGroupBoard (String board_size) {
+        SharedPreferences prefs = this.getSharedPreferences("AppPrefs1", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Board Size", board_size);
+        editor.apply();
+    }
+
+    static public String getGroupBoard(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AppPrefs1", MODE_PRIVATE);
+        String defaultGroupBoard = context.getResources().getString(R.string.default_board_size);
+        return prefs.getString("Board Size", defaultGroupBoard);
     }
 
     private void createRadioBtn2() {
@@ -141,14 +169,38 @@ public class OptionsActivity extends AppCompatActivity{ // implements AdapterVie
 
         //Create the buttons:
         for (int i = 0; i < numMines.length; i++) {
-            int board_size = numMines[i];
+            final int mine = numMines[i];
 
             RadioButton btn = new RadioButton(this);
-            btn.setText("" + board_size);
+            btn.setText("" + mine);
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    saveNumMines(mine);
+                }
+            });
 
             //Add to radio group:
             group.addView(btn);
+
+            if (mine == getNumMines(this)) {
+                btn.setChecked(true);
+            }
         }
+    }
+
+    private void saveNumMines (int mine) {
+        SharedPreferences prefs = this.getSharedPreferences("AppPrefs2", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("Mines", mine);
+        editor.apply();
+    }
+
+    static public int getNumMines (Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AppPrefs2", MODE_PRIVATE);
+        int defaultMines = context.getResources().getInteger(R.integer.default_num_mines);
+        return prefs.getInt("Mines", defaultMines);
     }
 
     /*

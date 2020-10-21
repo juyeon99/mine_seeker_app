@@ -2,8 +2,10 @@ package ca.cmpt276.cmpt276a3.model;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -25,9 +27,11 @@ public class GameActivity extends AppCompatActivity {
 
         board_size = "4 x 6";
         mines = 6;
-        extractDataFromIntent();
 
-        Toast.makeText(getApplicationContext(), board_size, Toast.LENGTH_SHORT).show();
+        extractDataFromOptions();
+
+        Toast.makeText(getApplicationContext(), "Board size: " + board_size, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Number of mines: " + mines, Toast.LENGTH_SHORT).show();
     }
 
     public static Intent makeIntent(Context context) {
@@ -35,18 +39,14 @@ public class GameActivity extends AppCompatActivity {
         return new Intent (context, GameActivity.class);
     }
 
-
-    public static Intent makeIntent2(Context context, String board_size, int mines) {
-        Intent intent = new Intent(context, GameActivity.class);
-        intent.putExtra("board size", board_size);
-        intent.putExtra("number of mines", mines);
-        return intent;
+    private void extractDataFromOptions() {
+        board_size = OptionsActivity.getGroupBoard(this);
+        mines = OptionsActivity.getNumMines(this);
     }
 
-    private void extractDataFromIntent() {
-        Intent intent = getIntent();
-        board_size = intent.getStringExtra("board size");
-        mines = intent.getIntExtra("mines", 6);
-        Toast.makeText(getApplicationContext(), board_size, Toast.LENGTH_SHORT).show();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        extractDataFromOptions();
     }
 }
