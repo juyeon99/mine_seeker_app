@@ -9,4 +9,8 @@
 
     <string name="default_board_size">4 x 6</string>
 
+    <string name="link">
+        <a href="https://opencoursehub.cs.sfu.ca/jackt/grav-cms/cmpt276-2/home">Created by Juyeon Hong</a>
+    </string>
+
 </resources>

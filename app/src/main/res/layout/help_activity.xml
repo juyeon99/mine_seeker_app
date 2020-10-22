@@ -6,15 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".model.HelpActivity">
 
-    <ScrollView
-        android:layout_width="614dp"
-        android:layout_height="305dp"
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="662dp"
+        android:layout_height="52dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="@string/link"
+        android:textColor="#8A4FF1"
+        android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849"
+        app:layout_constraintVertical_bias="0.231" />
+
+    <ScrollView
+        android:layout_width="608dp"
+        android:layout_height="276dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
 
         <TextView

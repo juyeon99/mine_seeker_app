@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
         return new Intent (context, MenuActivity.class);
     }
 
-    public static Intent makeIntent() {
-        return null;
-    }
+//    public static Intent makeIntent() {
+//        return null;
+//    }
 }

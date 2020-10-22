@@ -20,6 +20,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import ca.cmpt276.cmpt276a3.MenuActivity;
 import ca.cmpt276.cmpt276a3.R;
 
 // Image from:
@@ -43,6 +44,7 @@ public class GameActivity extends AppCompatActivity {
 
     int found = 0;
     int scan = 0;
+    int played = 0;
 
 
     @Override
@@ -157,8 +159,10 @@ public class GameActivity extends AppCompatActivity {
             random[row][col] = -2;
 
             if (found == mines) {
+                played++;
                 setMessage();
-
+                Intent intent = MenuActivity.makeIntent(GameActivity.this);
+                startActivity(intent);
             }
 
             for (int i = 0; i < rows; i++) {  // updates number of hidden mines
@@ -166,14 +170,14 @@ public class GameActivity extends AppCompatActivity {
                     String text = buttons[i][col].getText().toString();
                     int num = Integer.parseInt(text);
                     int count = num - 1;
-                    btn.setText("" + count);
+                    buttons[i][col].setText("" + count);
                 }
             } for (int j = 0; j < cols; j++) {
                 if (random[row][j] == -1) {
                     String text = buttons[row][j].getText().toString();
                     int num = Integer.parseInt(text);
                     int count = num - 1;
-                    btn.setText("" + count);
+                    buttons[row][j].setText("" + count);
                 }
             }
         }
@@ -221,6 +225,10 @@ public class GameActivity extends AppCompatActivity {
         TextView scansUsed = (TextView) findViewById(R.id.scans);
         String message2 = "# Scans used: " + scan;
         scansUsed.setText(message2);
+
+        TextView numPlayed = (TextView) findViewById(R.id.timesPlayed);
+        String message3 = "Times Played: " + played;
+        numPlayed.setText(message3);
     }
 
     private void extractDataFromOptions() {

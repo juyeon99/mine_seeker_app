@@ -17,7 +17,7 @@ import ca.cmpt276.cmpt276a3.MenuActivity;
 import ca.cmpt276.cmpt276a3.R;
 
 // Code found at:
-// https://www.youtube.com/watch?v=y6StJRn-Y-A&feature=youtu.be
+// https://www.youtube.com/watch?v=y6StJRn-Y-A&feature=youtu.be message fragment
 
 public class MessageFragment extends AppCompatDialogFragment {
 
@@ -33,13 +33,10 @@ public class MessageFragment extends AppCompatDialogFragment {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                TextView tv = (TextView) getActivity().findViewById(R.id.message);
-//                tv.setText("You've found all the mines!");
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        Intent intent = MenuActivity.makeIntent();
-                        startActivity(intent);
-                        //finish();
+//                        Intent intent = MenuActivity.makeIntent();
+//                        startActivity(intent);
                         break;
                 }
             }
