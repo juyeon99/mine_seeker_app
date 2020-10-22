@@ -1,8 +1,8 @@
 package ca.cmpt276.cmpt276a3.model;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,9 +16,6 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,7 +23,9 @@ import java.util.Collections;
 import ca.cmpt276.cmpt276a3.R;
 
 // Image from:
-// https://www.pngwing.com/ko/free-png-idbew
+// https://www.pngwing.com/ko/free-png-idbew mines
+// https://www.freepik.com/premium-vector/congratulations-lettering-message-vector-greeting_3049381.htm#page=1&query=congratulations&position=43 congratulations
+
 
 // Code found at:
 // https://www.youtube.com/watch?v=4MFzuP1F-xQ Dynamic buttons
@@ -57,13 +56,20 @@ public class GameActivity extends AppCompatActivity {
 
         extractDataFromOptions();
         setBoardSize();
-
-
+        
         buttons = new Button[rows][cols];
 
         shuffleMines();
         populateButtons();
         textSettings();
+    }
+
+    private void setMessage() {
+        FragmentManager manager = getSupportFragmentManager();
+        MessageFragment dialog = new MessageFragment();
+        dialog.show(manager, "MessageDialog");
+
+
     }
 
     private void shuffleMines() {
@@ -150,6 +156,11 @@ public class GameActivity extends AppCompatActivity {
             textSettings();
             random[row][col] = -2;
 
+            if (found == mines) {
+                setMessage();
+
+            }
+
             for (int i = 0; i < rows; i++) {  // updates number of hidden mines
                 if (random[i][col] == -1) {
                     String text = buttons[i][col].getText().toString();
@@ -212,14 +223,14 @@ public class GameActivity extends AppCompatActivity {
         scansUsed.setText(message2);
     }
 
-    public static Intent makeIntent(Context context) {
-        // Switching activity from MenuActivity to GameActivity
-        return new Intent (context, GameActivity.class);
-    }
-
     private void extractDataFromOptions() {
         board_size = OptionsActivity.getGroupBoard(this);
         mines = OptionsActivity.getNumMines(this);
+    }
+
+    public static Intent makeIntent(Context context) {
+        // Switching activity from MenuActivity to GameActivity
+        return new Intent (context, GameActivity.class);
     }
 
     @Override

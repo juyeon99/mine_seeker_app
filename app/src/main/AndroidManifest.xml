@@ -10,6 +10,7 @@
         android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".model.Message"></activity>
         <activity
             android:name=".model.GameActivity"
             android:screenOrientation="landscape" />
