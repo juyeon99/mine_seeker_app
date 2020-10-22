@@ -1,6 +1,9 @@
 CMPT276 Assignment3
+
 Game Mine Seeker
+
 Juyeon Hong (juyeonh 301386460)
+
 
 Optional features
 
