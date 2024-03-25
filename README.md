@@ -1,14 +1,5 @@
-CMPT276 Assignment3
+Mine Seeker Game (지뢰찾기)
 
-Game Mine Seeker
-
-Juyeon Hong (juyeonh 301386460)
-
-
-Optional features
-
-Welcome screen includes 2 different animations (moving from up and down)
-
-Welcome screen automatically advances to the main menu after all animation
-
-Made the buttons visually appealing
+- Can choose to play the game with default option or choose different option or read how to do the game at the menu page.
+- Scan the blocks by clicking to find mines.
+- Automatically saves the number of play
